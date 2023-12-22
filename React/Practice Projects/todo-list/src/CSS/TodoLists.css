@@ -1,0 +1,23 @@
+.todoitems {
+  /* border: 1px solid red; */
+  display: flex;
+  flex-direction: column;
+  margin-top: 10px;
+}
+.todoitems-container {
+  /* border: 1px solid red; */
+  display: flex;
+  justify-content: space-between;
+  padding: 16px 0px;
+  align-items: center;
+}
+.todoitems-text {
+  padding-left: 16px;
+  color: #404040;
+  font-size: 22px;
+  width: 80%;
+}
+.todoitems-cross-icon {
+  padding-right: 20px;
+  cursor: pointer;
+}

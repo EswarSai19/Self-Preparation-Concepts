@@ -1,21 +1,31 @@
 import React, { useState, useRef } from "react";
 import "../CSS/Todo.css";
 import { useEffect } from "react";
+import TodoLists from "./TodoLists";
 const Todo = () => {
   const [todos, setTodos] = useState([]);
   const inputRef = useRef(null);
-  const [count, setCount] = useState(0);
+  //   const [count, setCount] = useState(0);
+  let count = 0;
   const add = () => {
     setTodos([
       ...todos,
-      { no: count, text: inputRef.current.value, display: "" },
+      { no: count++, text: inputRef.current.value, display: "" },
     ]);
-    setCount(count + 1);
+    // setCount(count + 1);
     inputRef.current.value = "";
+    localStorage.setItem("todos_count", count);
   };
   useEffect(() => {
-    console.log(todos);
+    setTodos(JSON.parse(localStorage.getItem("todos")));
+  }, []);
+  useEffect(() => {
+    setTimeout(() => {
+      console.log(todos);
+      localStorage.setItem("todos", JSON.stringify(todos));
+    }, 100);
   }, [todos]);
+
   return (
     <div>
       <div className="todo">
@@ -24,7 +34,7 @@ const Todo = () => {
           <input
             ref={inputRef}
             type="text"
-            placeholder="Add todo here"
+            placeholder="Add your task"
             className="todo-input"
           />
           <div className="todo-add-btn" onClick={() => add()}>
@@ -32,13 +42,16 @@ const Todo = () => {
           </div>
         </div>
         <div className="todo-list">
-          {/* {todos.map((item, ind) => {
+          {todos.map((item, ind) => {
             return (
-              <h2 key={ind}>
-                {ind + 1}. {item}
-              </h2>
+              <TodoLists
+                key={ind}
+                no={item.no}
+                display={item.display}
+                text={item.text}
+              />
             );
-          })} */}
+          })}
         </div>
       </div>
     </div>
