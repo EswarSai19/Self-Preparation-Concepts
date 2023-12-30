@@ -56,7 +56,9 @@ export const login = async (req, res, next) => {
     existingUser.password
   );
   if (!isPasswordCorrect) {
-    return res.status(400).json({ message: "Incorrect Password" });
+    return res
+      .status(400)
+      .json({ message: "Incorrect Password Please re-enter" });
   }
   return res.status(201).json({ Message: "Login Successful" });
 };
