@@ -9,17 +9,17 @@ const Intro = () => {
       <div className="introContent">
         <span className="hello">Hello</span>
         <span className="introText">
-          I'm<span className="introName">Eswar</span>
+          I'm <span className="introName">Eswar</span>
           <br />
-          <span>Website Designer</span>
+          <span>Web Developer</span>
         </span>
         <p className="introPara">
-          I am a skilled web developer with experience in creating various
-          things which are new.
+          I am a skilled web developer with experience <br />
+          in creating various things which are new.
         </p>
         <Link>
           <button className="btn">
-            <img src={btnImg} alt="" />
+            <img className="btnImg" src={btnImg} alt="" />
             Hire Me
           </button>
         </Link>
