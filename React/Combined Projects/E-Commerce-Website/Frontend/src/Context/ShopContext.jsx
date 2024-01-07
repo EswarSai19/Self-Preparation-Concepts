@@ -22,12 +22,14 @@ const ShopContextProvider = (props) => {
     console.log("Cart Items", cartItems);
     let totalAmount = 0;
     for (let item in cartItems) {
+      console.log("I am in");
       if (cartItems[item] > 0) {
-        let itemInfo = all_product.find(
-          (product) => product.id === Number(item)
-        );
-        console.log("new price", itemInfo.new_price);
-        totalAmount += itemInfo.new_price * cartItems[item];
+        console.log("item number:", item, cartItems[item]);
+        // let itemInfo = all_product.find(
+        //   (product) => product.id === Number(item)
+        // );
+        // console.log("new price", itemInfo.new_price);
+        // totalAmount += itemInfo.new_price * cartItems[item];
       }
       console.log("total amount:", totalAmount);
       return totalAmount;
